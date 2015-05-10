@@ -1,6 +1,7 @@
 module Very.Begining
 
 import Data.Vect
+import Geometry.Plain.Structure
 
 add : Nat -> Nat -> Nat
 add x y = x + y
