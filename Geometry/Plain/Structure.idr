@@ -1,63 +1,25 @@
 module Geometry.Plain.Structure
 
-Point : Num a => a -> (a, a)
-Point a = (a, a)
+import Data.Vect
 
-APoint : Num a => a -> a -> (a, a)
-APoint x y = (x, y)
+record Person where
+    constructor MkPerson
+    name : String
+    age : Int
 
-xOf : Num a => APoint -> a
-xOf APoint x y = x
+fred : Person
+fred = MkPerson "Fred" 30
 
+record Point where
+  constructor APoint 
+  x : Double
+  y : Double
 
+data Polygon
 
+record ConvexPolygon where
+  constructor AConvexPolygon
+  vertices : Vect n a
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{-
-Key : Type
-record Key where
-    MkKey : (x : Float) -> 
-            (y : Float) -> 
-            Key
-
-
-data Num a => SPoint a a where
-  SPoint x y = SPoint x y
-
-Point : Type
-Point = Float -> Float -> Type
-
-data Shape = Line Point Point-}
+cp : ConvexPolygon
+cp = AConvexPolygon (Vect 2 (List [1,2]))
