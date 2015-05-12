@@ -8,4 +8,4 @@ record Person where
 data Polygon : Nat -> Nat -> Type where
   ConvexPolygon : (a : Nat) -> (a : Nat) -> Polygon a a
   ConcavePolygon : (a : Nat) -> (a : Nat) -> Polygon a a
-   
+
