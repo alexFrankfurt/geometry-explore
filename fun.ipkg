@@ -1,3 +1,6 @@
 package fun
 
+opts = "-p effects"
+
 modules = Very.Begining
+
