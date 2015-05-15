@@ -12,6 +12,6 @@ hello = do putStr "Enter your name "
 record Person where
   constructor MkPerson
   name : String
-
+c
 main : IO ()
 main = run hello

@@ -16,7 +16,10 @@ det (Segment p1 p2) (Segment p3 p4) = det (Vector ((x p2) - (x p1))
                                                   ((y p2) - (y p1)))
                                           (Vector ((x p4) - (x p3))
                                                   ((y p4) - (y p3)))
+
  
+%name Point p
+  
 relate : Point -> VectLike -> Bool
 
 test : VectLike -> Double
