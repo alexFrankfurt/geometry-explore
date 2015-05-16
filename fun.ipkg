@@ -2,8 +2,6 @@ package fun
 
 opts = "-p effects"
 
-modules = Very.Begining,
-	  Geometry.Plain.Structure,
+modules = Main,
 	  Shape,
-	  Main
-
+	  Test.Shape
