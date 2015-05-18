@@ -1,15 +1,23 @@
 module Data
 
-data Point = MkPoint Double Double
+namespace point
+  data Point = MkPoint Double Double
 
-x : Point -> Double
-x (MkPoint x y) = x
+  x : Point -> Double
+  x (MkPoint x y) = x
 
-y : Point -> Double
-y (MkPoint x y) = y
+  y : Point -> Double
+  y (MkPoint x y) = y
 
 data Line = MkLine Point Point
-data VectLike = Vector Double Double | Segment Point Point
 
-%name Point p1, p2, p3, p4
-%name VectLike v1, v2, v3
+namespace vectLike
+  class VectLike a where
+    x : a -> Double
+    y : a -> Double
+
+data Segment = MkSegment Point Point
+
+instance VectLike Segment where
+  x (MkSegment p1 p2) = point.x p2 - point.x p1
+  y (MkSegment p1 p2) = point.y p2 - point.y p1

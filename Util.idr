@@ -14,18 +14,14 @@ associn (a, b) (c, d) =
 
 namespace p
   associn : (Point, Point) -> (Point, Point) -> Bool
-  associn (p1, p2) (p3, p4) = case x p2 - x p1 of
-    0.0 => (y p1, y p2) `associn` (y p3, y p4)
-    _   => (x p1, x p2) `associn` (x p3, x p4)
+  associn (p1, p2) (p3, p4) = case point.x p2 - point.x p1 of
+    0.0 => (point.y p1, point.y p2) `associn` (point.y p3, point.y p4)
+    _   => (point.x p1, point.x p2) `associn` (point.x p3, point.x p4)
 
-det : VectLike -> VectLike -> Double
-det (Vector x y) (Vector z d) = d * x - z * y
-det (Segment p1 p2) (Segment p3 p4) = det (Vector (x p2 - x p1)
-                                                 $ y p2 - y p1)
-                                          (Vector (x p4 - x p3)
-                                                 $ y p4 - y p3)
+det : VectLike a => a -> a -> Double
+det a b = vectLike.y b * vectLike.x a - vectLike.x b * vectLike.y a
 
-divideEnds : VectLike -> VectLike -> Bool
-divideEnds (Segment p1 p2) (Segment p3 p4) = 
-  det (Segment p1 p2) (Segment p1 p3) *
-  det (Segment p1 p2) (Segment p1 p4) < 0
+divideEnds : Segment -> Segment -> Bool 
+divideEnds (MkSegment p1 p2) (MkSegment p3 p4) = 
+  det (MkSegment p1 p2) (MkSegment p1 p3) *
+  det (MkSegment p1 p2) (MkSegment p1 p4) < 0
