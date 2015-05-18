@@ -3,5 +3,8 @@ package fun
 opts = "-p effects"
 
 modules = Main,
+	  Data,
+	  Relation,
+	  Util,
 	  Shape,
 	  Test.Shape
