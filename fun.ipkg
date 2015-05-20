@@ -7,4 +7,5 @@ modules = Main,
 	  Relation,
 	  Util,
 	  Shape,
-	  Test.Shape
+	  Test.Shape,
+	  Enhancement.Relation
