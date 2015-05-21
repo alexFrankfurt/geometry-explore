@@ -30,10 +30,13 @@ namespace ll
     
 namespace ss
   relate : Segment -> Segment -> RelationType
-  relate (MkSegment p1 p2) (MkSegment p3 p4) = case ((MkLine p1 p2) `relate` (MkLine p3 p4)) of
-    Parallel => NotIntersect
-    TheSame => if ((p1, p2) `p.associn` (p3, p4)) == True
-      then Intersect else NotIntersect
-    _ => if not ((MkSegment p1 p2) `divideEnds` (MkSegment p3 p4)) then NotIntersect
-         else if not ((MkSegment p3 p4) `divideEnds` (MkSegment p1 p2)) then NotIntersect
-         else Intersect
+  relate (MkSegment p1 p2) (MkSegment p3 p4) 
+    = case ((MkLine p1 p2) `relate` (MkLine p3 p4)) of
+           Parallel => NotIntersect
+           TheSame => if ((p1, p2) `p.associn` (p3, p4)) == True
+                      then Intersect else NotIntersect
+           _ => if not ((MkSegment p1 p2) `divideEnds` (MkSegment p3 p4)) 
+                then NotIntersect
+                else if not ((MkSegment p3 p4) `divideEnds` (MkSegment p1 p2)) 
+                then NotIntersect
+                else Intersect

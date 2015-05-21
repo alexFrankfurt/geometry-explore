@@ -22,6 +22,13 @@ instance VectLike Segment where
   x (MkSegment p1 p2) = point.x p2 - point.x p1
   y (MkSegment p1 p2) = point.y p2 - point.y p1
 
+record Triangle where
+  constructor MkTriangle
+  p1 : Point
+  p2 : Point
+  p3 : Point
+
+-- Some prerequisites.
 basePoint : Point
 basePoint = MkPoint 0 0
 
@@ -30,4 +37,3 @@ point11 = MkPoint 1 1
 
 line'8'8'2'2 : Line
 line'8'8'2'2 = MkLine (MkPoint 8 8) (MkPoint 2 2)
-

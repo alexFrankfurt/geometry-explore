@@ -25,3 +25,6 @@ divideEnds : Segment -> Segment -> Bool
 divideEnds (MkSegment p1 p2) (MkSegment p3 p4) = 
   det (MkSegment p1 p2) (MkSegment p1 p3) *
   det (MkSegment p1 p2) (MkSegment p1 p4) < 0
+
+line : Segment -> Line
+line (MkSegment p1 p2) = MkLine p1 p2

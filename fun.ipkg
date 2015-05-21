@@ -6,6 +6,6 @@ modules = Main,
 	  Data,
 	  Relation,
 	  Util,
-	  Shape,
+	  Triangulation,
 	  Test.Shape,
 	  Enhancement.Relation
