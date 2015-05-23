@@ -1,4 +1,4 @@
-package fun
+package geometry-explore
 
 opts = "-p effects"
 
