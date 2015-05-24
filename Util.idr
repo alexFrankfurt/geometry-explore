@@ -1,5 +1,10 @@
 module Util
 
+import Effects
+import Effect.State
+import Effect.Random
+import Data.Vect
+
 import Data
 
 iin : (Ord a, Num a) => a -> (a, a) -> Bool
@@ -14,9 +19,9 @@ associn (a, b) (c, d) =
 
 namespace p
   associn : (Point, Point) -> (Point, Point) -> Bool
-  associn (p1, p2) (p3, p4) = case point.x p2 - point.x p1 of
-    0.0 => (point.y p1, point.y p2) `associn` (point.y p3, point.y p4)
-    _   => (point.x p1, point.x p2) `associn` (point.x p3, point.x p4)
+  associn (p1, p2) (p3, p4) = case Point.x p2 - Point.x p1 of
+    0.0 => (Point.y p1, Point.y p2) `associn` (Point.y p3, Point.y p4)
+    _   => (Point.x p1, Point.x p2) `associn` (Point.x p3, Point.x p4)
 
 det : VectLike a => a -> a -> Double
 det a b = vectLike.y b * vectLike.x a - vectLike.x b * vectLike.y a
@@ -28,3 +33,22 @@ divideEnds (MkSegment p1 p2) (MkSegment p3 p4) =
 
 line : Segment -> Line
 line (MkSegment p1 p2) = MkLine p1 p2
+
+-- Make real random, currently it creates the same number.
+
+randInt : Integer -> Integer
+randInt x = runPure (do srand 1234459
+                        rndInt (-x) x)
+               
+randDouble : Integer -> Double
+randDouble x = fromInteger (randInt x )               
+
+randPt : Integer -> Integer -> Point
+randPt x y = MkPoint (randDouble x) (randDouble y)
+
+randPts : (n : Nat) -> Vect n Point
+randPts Z     = []
+randPts (S k) = (randPt 200 200) :: randPts k
+
+
+
