@@ -33,8 +33,6 @@ record Triangle where
   p2 : Point
   p3 : Point
 
-data Triangulation = MkTriangulation
-
 -- Some prerequisites.
 basePoint : Point
 basePoint = MkPoint 0 0

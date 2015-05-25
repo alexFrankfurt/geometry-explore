@@ -10,7 +10,7 @@ data RelationType = On
 
 data Relation = RelOf String RelationType String
 
-class Shape a where
+class Shape z where
 
 instance Shape Line where
 
@@ -24,7 +24,7 @@ class Some a where
 --     some instance may have such constructor), but
 -- function call return :
 --   Can't resolve type class Some Segment
-instance Some Segment where
+instance Some Segment wherep
 
 fun : Shape a => a -> Nat
 fun (MkSegment a b) = 10
@@ -46,20 +46,28 @@ instance ShowTy Line where
 
 -- on         relate basePoint point11
 -- returns    RelOf "Point" NotIntersect "Line" : Relation
-{-
-pointPointImpl : (Shape a, Shape b) => Point -> Point -> (a, b)
-pointPointImpl a b = (a, b)
 
-pointLineImpl : (Shape a, Shape b) => Point -> Line -> (a, b)
-pointLineImpl a b = (a, b)
+pointPointImpl : Point -> Point -> RelationType
+pointPointImpl (MkPoint a b) (MkPoint c d) = On
 
-relate : (Shape a, Shape b) => a -> b -> (a, b)
-relate (MkPoint b a) (MkPoint c d) = pointPointImpl (MkPoint a b) (MkPoint c d)
-relate (MkPoint b a) (MkLine c d) = pointLineImpl (MkPoint a b) (MkLine c d)
+pointLineImpl : Point -> Line -> RelationType
+pointLineImpl (MkPoint b a) (MkLine c d) = Intersect
+
+-- When elaborating left hand side of relate:
+--      Can't unify
+--              Data.Point (Inferred value)
+--      with
+--              Point (Given value)
+
+-- relate : (Shape a, Shape b) => a -> b -> RelationType
+-- relate {a=Point} {b=Point} (MkPoint c d) (MkPoint e f) = pointPointImpl (MkPoint c d) (MkPoint e f)
+-- relate (MkPoint b a) (MkLine c d) = pointLineImpl (MkPoint a b) (MkLine c d)
  
-res0 : Relation
-res0 = relate basePoint point11
--}
+-- res0 : RelationType
+-- res0 = relate basePoint point11
+
+-- res1 : RelationType
+-- res1 = relate point14 line'8'8'2'2
 
 -- ||| Represents relation betwen types (here figures)
 -- ||| The idea is to wrap three entities:
