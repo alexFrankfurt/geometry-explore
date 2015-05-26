@@ -24,7 +24,7 @@ class Some a where
 --     some instance may have such constructor), but
 -- function call return :
 --   Can't resolve type class Some Segment
-instance Some Segment wherep
+instance Some Segment where
 
 fun : Shape a => a -> Nat
 fun (MkSegment a b) = 10

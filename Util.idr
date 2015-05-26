@@ -50,5 +50,5 @@ randPts : (n : Nat) -> Vect n Point
 randPts Z     = []
 randPts (S k) = (randPt 200 200) :: randPts k
 
-
-
+init : (s : String) -> {auto ok : isCons (unpack s) = True } -> String
+init s = pack $ init $ unpack s
