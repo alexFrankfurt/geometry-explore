@@ -1,4 +1,4 @@
-package geometry-explore
+package geometryexplore
 
 opts = "-p effects"
 

@@ -2,14 +2,21 @@ module Enhancement.Relation
 
 import Data
 
+
+
 data RelationType = On
                   | Intersect
                   | NotIntersect
                   | TheSame
                   | Parallel
+                  
+pointPointImpl : Point -> Point -> RelationType
+pointPointImpl (MkPoint a b) (MkPoint c d) = On
 
-data Relation = RelOf String RelationType String
+pointLineImpl : Point -> Line -> RelationType
+pointLineImpl (MkPoint b a) (MkLine c d) = Intersect                  
 
+-- add constraints for more safe code
 class Shape z where
 
 instance Shape Line where
@@ -17,6 +24,16 @@ instance Shape Line where
 instance Shape Segment where
 
 instance Shape Point where
+-------------------------------------
+
+class (Shape a, Shape b) => Relate a b where
+  relate : a -> b -> RelationType
+  
+instance Relate Point Point where
+  relate = pointPointImpl
+  
+instance Relate Point Line where
+  relate = pointLineImpl
 
 ----------------------------------
 class Some a where
@@ -30,15 +47,15 @@ fun : Shape a => a -> Nat
 fun (MkSegment a b) = 10
 ----------------------------------
 
-||| type class for types to show it's type
-class ShowTy a where
-  showTy : a -> String
+-- type class for types to show it's type
+-- class ShowTy a where
+--   showTy : a -> String
 
-instance ShowTy Point where
-  showTy _ = "Point"
+-- instance ShowTy Point where
+--   showTy _ = "Point"
   
-instance ShowTy Line where
-  showTy _ = "Line"
+-- instance ShowTy Line where
+--   showTy _ = "Line"
 
 -- pointPointImpl : (Shape a, Shape b) => a -> b -> Double
 -- pointPointImpl a b = point.x a
@@ -47,11 +64,7 @@ instance ShowTy Line where
 -- on         relate basePoint point11
 -- returns    RelOf "Point" NotIntersect "Line" : Relation
 
-pointPointImpl : Point -> Point -> RelationType
-pointPointImpl (MkPoint a b) (MkPoint c d) = On
 
-pointLineImpl : Point -> Line -> RelationType
-pointLineImpl (MkPoint b a) (MkLine c d) = Intersect
 
 -- When elaborating left hand side of relate:
 --      Can't unify
