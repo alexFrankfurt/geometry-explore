@@ -35,6 +35,16 @@ instance Relate Point Point where
 instance Relate Point Line where
   relate = pointLineImpl
 
+-- doesn't compiles 
+-- data Test : Type where
+
+-- testf : Test -> Test -> RelationType
+-- testf a b = Intersect
+
+-- instance Relate Test Test  where
+--   relate = testf
+  
+
 ----------------------------------
 class Some a where
 -- If there is no instance, program type checks (it makes sense:
