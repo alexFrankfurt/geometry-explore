@@ -8,3 +8,5 @@ modules = Main,
 	  Util,
 	  Test.Shape,
 	  Enhancement.Relation
+	  Enhancement.DepShape
+	  Enhancement.Relate
