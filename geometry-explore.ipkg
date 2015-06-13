@@ -2,11 +2,16 @@ package geometryexplore
 
 opts = "-p effects"
 
-modules = Main,
-	  Data,
-	  Relation,
-	  Util,
-	  Test.Shape,
-	  Enhancement.Relation
-	  Enhancement.DepShape
-	  Enhancement.Relate
+modules = Main
+	, Action
+	, Algo
+	, Animation
+	, Data
+	, Relation
+	, Util
+	, Test.Shape
+	, Prerequisities
+
+	, Enhancement.Relation
+	, Enhancement.DepShape
+	, Enhancement.Relate
