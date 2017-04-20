@@ -11,17 +11,19 @@ record InitState (n : Nat) where
 is : InitState 3
 is = MkInitState [1, 2, 3]
 
+public export
 record State (n : Nat) where
   constructor MkState
   pts : Vect n a
   cls : Pair a a
-  
+
 st : State 3
 st = MkState [basePoint, basePoint, basePoint] (basePoint, point11)
 
 p : Point
 p = fst $ cls st
 
+public export
 data Direction = MkDirection Double Double
 
 record Activity (n : Nat) where

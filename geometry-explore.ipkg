@@ -9,9 +9,9 @@ modules = Main
 	, Data
 	, Relation
 	, Util
-	, Test.Shape
-	, Prerequisities
+	, Prerequisites
 
 	, Enhancement.Relation
 	, Enhancement.DepShape
 	, Enhancement.Relate
+	, Enhancement.ImplicitType

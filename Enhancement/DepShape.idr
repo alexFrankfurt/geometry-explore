@@ -1,5 +1,7 @@
 module DepShape
 
+%access export
+
 data Line = Li
 
 data Point = Po
@@ -11,7 +13,7 @@ data RelationType = On
                   | NotIntersect
                   | TheSame
                   | Parallel
-                  
+
 -- class Shape z where
 
 -- instance Shape Line where
@@ -24,7 +26,7 @@ data Shape : (a : Type) -> (figure : a) -> Type where
   MkPo : Double -> Double -> Shape Point Po
   MkLi : Point -> Point -> Shape Line Li
   MkSe : Point -> Point -> Shape Segment Se
-  
+
 relate : (Shape a b) -> String
 relate (MkPo x y)  = "po"
 relate (MkLi x y)  = "li"

@@ -7,22 +7,22 @@ data RelationType = On
                   | NotIntersect
                   | TheSame
                   | Parallel
-                  
+
 pointPointImpl : Point -> Point -> RelationType
 pointPointImpl (MkPoint a b) (MkPoint c d) = On
 
 pointLineImpl : Point -> Line -> RelationType
-pointLineImpl (MkPoint b a) (MkLine c d) = Intersect                  
+pointLineImpl (MkPoint b a) (MkLine c d) = Intersect
 
 -- add constraints for more safe code
-class Shape z where
+interface Shape z where
 
 
-instance Shape Line where
+Shape Line where
 
-instance Shape Segment where
+Shape Segment where
 
-instance Shape Point where
+Shape Point where
 -------------------------------------
 
 
@@ -37,7 +37,7 @@ instance Shape Point where
 -- relate : (Shape a, Shape b) => a -> b -> RelationType
 -- relate {a=Point} {b=Point} (MkPoint c d) (MkPoint e f) = pointPointImpl (MkPoint c d) (MkPoint e f)
 -- relate (MkPoint b a) (MkLine c d) = pointLineImpl (MkPoint a b) (MkLine c d)
- 
+
 -- res0 : RelationType
 -- res0 = relate basePoint point11
 

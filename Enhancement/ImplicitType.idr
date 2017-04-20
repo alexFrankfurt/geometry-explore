@@ -6,13 +6,13 @@ data Point = Po
 
 data Segment = Se
 
-class Shape z where
+interface Shape z where
 
-instance Shape Line where
+Shape Line where
 
-instance Shape Segment where
+Shape Segment where
 
-instance Shape Point where
+Shape Point where
 
 rel : Shape a => a -> a
 rel x = x
@@ -23,4 +23,4 @@ relate {t = Segment} _ = "seg"
 relate {t = Line}    _ = "line"
 
 fun : Shape a => {a : Type} -> (b : a) -> a
-fun x = _
+fun x = x

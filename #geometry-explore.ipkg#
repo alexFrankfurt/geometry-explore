@@ -1,0 +1,18 @@
+package geometryexplore
+
+opts = "-p effects"
+
+modules = Main
+	, Action
+	, Algo
+	, Animation
+	, Data
+	, InitialData
+	, Relation
+	, Util
+	, Prerequisites
+
+	, Enhancement.Relation
+	, Enhancement.DepShape
+	, Enhancement.Relate
+	, Enhancement.ImplicitType
